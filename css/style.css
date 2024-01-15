@@ -37,13 +37,11 @@
 .button-down {
   position: absolute;
   cursor: pointer;
-  border: 1px dashed red;
   text-align: center;
 }
 
 .button-up{
   top: 10px;
-  transform: ;
 }
 
 .button-down{
