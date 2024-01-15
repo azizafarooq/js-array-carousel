@@ -1,0 +1,51 @@
+*{
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.bordered {
+  border: 1px dashed red;
+}
+
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.carousel-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  height: 300px;
+  background-color: antiquewhite;
+  position: relative;
+}
+
+.carousel-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.active{
+  display: flex;
+}
+
+.button-up,
+.button-down {
+  position: absolute;
+  cursor: pointer;
+  border: 1px dashed red;
+  text-align: center;
+}
+
+.button-up{
+  top: 10px;
+  transform: ;
+}
+
+.button-down{
+  bottom: 10px;
+}
