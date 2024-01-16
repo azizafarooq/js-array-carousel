@@ -1,16 +1,38 @@
-const slides = ['01.webp', '02.webp', '03.webp', '04.webp', '05.webp', '06.webp'];
-  const totalSlides = slides.length;
-  let currentSlideIndex = 0;
+const images = ['./img/01.webp', './img/02.webp', './img/03.webp', './img/04.webp', './img/05.webp'];
 
-  const carouselImg = document.querySelector('.carousel-img');
-  const buttonUp = document.querySelector('.button-up');
-  const buttonDown = document.querySelector('.button-down');
+const carouselContainer = document.querySelector('.carousel-container');
+const carousel = document.querySelector('.carousel');
+const buttonUp = document.querySelector('.button-up');
+const buttonDown = document.querySelector('.button-down');
 
-  const slidesEl = document.querySelectorAll('.carousel-img');
+let currentIndex = 0;
 
-  for (let i = 0; i < imgElements.length; i++) {
-    const slide = `./img/${slides[i]}`;
-    slidesEl[i] = slide;
+
+for (let i = 0; i < images.length; i++) {
+  const img = document.createElement('img');
+  img.src = images[i];
+  img.alt = `Image ${i + 1}`;
+  img.classList.add('carousel-img');
+
+  if (i === currentIndex) {
+    img.classList.add('active');
   }
+
+  carousel.appendChild(img);
+}
+
+const carouselImgs = document.querySelectorAll('.carousel-img');
+
+
+buttonUp.addEventListener('click', function () {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  updateActiveImage();
+})
+
+
+buttonDown.addEventListener('click', function () {
+  currentIndex = (currentIndex + 1) % images.length;
+  updateActiveImage();
+})
 
 
