@@ -20,8 +20,6 @@
   justify-content: center;
   align-items: center;
   position: relative;
-
-  background-color: rgb(223, 133, 17);
   
 }
 
@@ -37,8 +35,13 @@
   bottom: 10px;
 }
 
-img{
+.image{
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: none;
+}
+
+.active{
+  display: inline-block;
 }

@@ -1,35 +1,54 @@
-const images=['./img/01.webp', './img/02.webp', './img/03.webp', './img/04.webp'];
-const carouselContainer = document.querySelector('.carousel-container');
-const carousel = document.querySelector('.carousel');
-const buttonUp = document.querySelector('.button-up');
-const buttonDown = document.querySelector('.button-down');
-let currentIndex = 0;
+const images = ['./img/01.webp', './img/02.webp', './img/03.webp', './img/04.webp', './img/05.webp'];
+const slidesContainer = document.querySelector('.slides');
+const previous = document.getElementById('previous');
+const next = document.getElementById("next");
+let currentImage= 0;
 
+previous.addEventListener('click', showPreviousImage);
+next.addEventListener('click', showNextImage);
 
-for (let i = 0; i < images.length; i++) {
-  const img = document.createElement('img');
-  img.src = images[i];
-  img.alt = `Image ${i + 1}`;
-  img.classList.add('carousel-img');
-
-  if (i === currentIndex) {
-    img.classList.add('active');
+function showImage(index) {
+  const imagesElements = document.querySelectorAll('.image');
+  for (let i = 0; i < imagesElements.length; i++) {
+      const img = imagesElements[i];
+      if (i === index) {
+          img.classList.add('active');
+      } else {
+          img.classList.remove('active');
+      }
   }
-
-  carousel.appendChild(img);
 }
 
-const carouselImgs = document.querySelectorAll('.carousel-img');
+function showPreviousImage() {
+  currentImage--;
+  if (currentImage < 0) {
+      currentImage = images.length - 1;
+  }
+  showImage(currentImage);
+}
+
+function showNextImage() {
+  currentImage++;
+  if (currentImage >= images.length) {
+      currentImage = 0;
+  }
+  showImage(currentImage);
+}
 
 
-buttonUp.addEventListener('click', function () {
-  currentIndex = (currentIndex - 1 + images.length) % images.length;
-  updateActiveImage();
-})
+for (let i = 1; i < images.length; i++){
+  console.log(images[i]);
+  let img = document.createElement('img');
+  img.classList.add('image');
+  img.src = images[i];
+  img.alt = `Image ${i + 1}`
+  slidesContainer.appendChild(img);
+
+  console.log(img); 
+}
+
+showImage(currentImage);
 
 
-buttonDown.addEventListener('click', function () {
-  currentIndex = (currentIndex + 1) % images.length;
-  updateActiveImage();
-})
+
 
