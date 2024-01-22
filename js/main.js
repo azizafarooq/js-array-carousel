@@ -36,7 +36,7 @@ function showNextImage() {
 }
 
 
-for (let i = 1; i < images.length; i++){
+for (let i = 0; i < images.length; i++){
   console.log(images[i]);
   let img = document.createElement('img');
   img.classList.add('image');
