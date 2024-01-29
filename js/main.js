@@ -7,6 +7,7 @@ let currentImage= 0;
 previous.addEventListener('click', showPreviousImage);
 next.addEventListener('click', showNextImage);
 
+
 function showImage(index) {
   const imagesElements = document.querySelectorAll('.image');
   for (let i = 0; i < imagesElements.length; i++) {
@@ -35,6 +36,15 @@ function showNextImage() {
   showImage(currentImage);
 }
 
+function startSlideInterval() {
+  slideInterval = setInterval(() => {
+    showNextImage();
+  }, 3000); // 3000 milliseconds (3 seconds)
+}
+
+function stopSlideInterval() {
+  clearInterval(slideInterval);
+}
 
 for (let i = 0; i < images.length; i++){
   console.log(images[i]);
@@ -48,6 +58,10 @@ for (let i = 0; i < images.length; i++){
 }
 
 showImage(currentImage);
+previous.addEventListener('click', showPreviousImage);
+next.addEventListener('click', showNextImage);
+
+startSlideInterval();
 
 
 
